@@ -1,0 +1,27 @@
+{
+  "name": "tick",
+  "version": "1.0.0",
+  "description": "a simple demo program",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "cfarris",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.2",
+    "mocha": "^4.1.0"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cfarriscx/tickHW.git"
+  },
+  "bugs": {
+    "url": "https://github.com/cfarriscx/tickHW/issues"
+  },
+  "homepage": "https://github.com/cfarriscx/tickHW#readme"
+}
