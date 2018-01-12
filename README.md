@@ -1,1 +1,1 @@
-Twitter injestor.
+Twitter api injestor
