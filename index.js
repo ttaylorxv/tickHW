@@ -5,4 +5,9 @@ var calculateSquare = function(numIn) {
     return numOut;
 };
 
-console.log(calculateSquare(22));
+
+for(var x = 0; x < 9999; x++) {
+    
+    setTimeout(calculateSquare(x), 3000)
+    console.log(calculateSquare(x));
+}
