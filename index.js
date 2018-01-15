@@ -6,8 +6,7 @@ var calculateSquare = function(numIn) {
 };
 
 
-for(var x = 0; x < 9999; x++) {
-    
-    setTimeout(calculateSquare(x), 3000)
+for(var x = 0; x < 999999; x++) {
+
     console.log(calculateSquare(x));
 }
