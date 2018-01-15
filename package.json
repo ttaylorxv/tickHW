@@ -4,7 +4,8 @@
   "description": "a simple demo program",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "start": "node index.js"
   },
   "author": "cfarris",
   "license": "ISC",
