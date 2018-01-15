@@ -1,8 +1,7 @@
 #!groovy
 try {
     node {
-        stage('Build') {
-            build 'checkout-and-test'
+        stage('checkout-and-test') {
 
             checkout scm
 
