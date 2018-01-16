@@ -1,6 +1,5 @@
 #!groovy
 import hudson.model.*
-import groovy.json.JsonSlurperClassic
 
 
 try {
@@ -12,8 +11,7 @@ try {
 
             sh 'oc get pods'
 
-            def featurebranch = new JsonSlurperClassic().parseText($payload)
-            echo "ref: ${featurebranch.ref}"
+            readJSON text: $payload
             
         }
         /*
