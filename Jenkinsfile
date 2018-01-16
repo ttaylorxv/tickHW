@@ -12,7 +12,7 @@ try {
 
             sh 'oc get pods'
 
-            def props = readJSON text: '$githubdelivery'
+            def props = readJSON text: echo $githubdelivery
             
         }
         /*
