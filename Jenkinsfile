@@ -12,7 +12,7 @@ try {
 
             sh 'oc get pods'
 
-            readJSON text: githubdelivery
+            readJSON text: $githubdelivery
             
         }
         /*
