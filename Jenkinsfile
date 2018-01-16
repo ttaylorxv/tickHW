@@ -12,7 +12,7 @@ try {
 
             sh 'oc get pods'
 
-            sh 'props = readJSON text: $githubdelivery'
+            sh 'props = readJSON text: {'example' : 'json'}'
             
         }
         /*
