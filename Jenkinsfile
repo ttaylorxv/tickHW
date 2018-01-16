@@ -21,6 +21,10 @@ try {
             //println fromgithook
 
             sh """echo $fromgithook"""
+
+            println fromgithook.ref
+
+            println fromgithook['ref']
             
         }
         /*
