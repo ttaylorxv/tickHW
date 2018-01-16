@@ -1,4 +1,6 @@
 #!groovy
+import hudson.model.*
+
 try {
     node {
         stage('checkout-and-test') {
@@ -8,7 +10,7 @@ try {
 
             sh 'oc get pods'
 
-            sh 'featurebranch = JSON.parse($payload)'
+            featurebranch = JSON.parse($payload)
 
             
         }
