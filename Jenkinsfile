@@ -4,7 +4,9 @@ try {
         stage('checkout-and-test') {
 
             checkout scm
-            echo "from branch repository"
+
+            echo "new stuff"
+            echo "more new stuff"
 
 
         }
