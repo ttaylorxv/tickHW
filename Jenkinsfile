@@ -18,6 +18,7 @@ try {
             def testdef = '{ "stuff" : "things"}'
             echo '${fromgithook}'
             echo '${testdef}'
+            println fromgithook
 
             
         }
