@@ -7,12 +7,12 @@ try {
         stage('checkout-and-test') {
             
             checkout scm
-            //echo "the build worked! The payload is $payload"
+            echo "the build worked! The payload is $payload"
             //sh 'githubdelivery = $payload'
 
             sh 'oc get pods'
 
-            def props = readJSON text: '$payload'
+            def props = readJSON text: echo "$payload"
             
         }
         /*
