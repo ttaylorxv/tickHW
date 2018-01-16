@@ -20,7 +20,7 @@ try {
             //echo '${testdef}'
             //println fromgithook
 
-            sh 'echo +fromgithook+'
+            sh """echo $fromgithook"""
             
         }
         /*
