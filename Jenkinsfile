@@ -2,7 +2,8 @@
 try {
     node {
         stage('checkout-and-test') {
-
+            import hudson.model.*
+            
             checkout scm
             def payloadString = build.buildVariableResolver.resolve("payload")
 
