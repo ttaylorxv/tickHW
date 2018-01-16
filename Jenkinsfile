@@ -7,8 +7,8 @@ try {
         stage('checkout-and-test') {
             
             checkout scm
-            echo "the build worked! The payload is $payload"
-            githubdelivery = $payload
+            //echo "the build worked! The payload is $payload"
+            sh 'githubdelivery = $payload'
 
             sh 'oc get pods'
 
