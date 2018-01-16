@@ -2,15 +2,11 @@
 try {
     node {
         stage('checkout-and-test') {
-            import hudson.model.*
             
             checkout scm
-            def payloadString = build.buildVariableResolver.resolve("payload")
+            echo "the build worked! The payload is $payload"
 
-            payloadObject = new groovy.json.JsonSlurper().parseText(payloadString)
-
-            echo payloadObject
-
+            
         }
         stage('Deploy to Dev') {
             openshiftDeploy apiURL: '', authToken: '', depCfg: 'simple-nodejs-dev', verbose: 'false', waitTime: ''
