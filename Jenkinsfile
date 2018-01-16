@@ -8,18 +8,19 @@ try {
             
             checkout scm
             sh 'echo "$payload" >> tempGitFile.json'
-            sh 'cat tempGitFile.json'
-            echo "$payload"
+            //sh 'cat tempGitFile.json'
+            //echo "$payload"
             //sh 'githubdelivery = $payload'
 
-            sh 'oc get pods'
+            //sh 'oc get pods'
 
             def fromgithook = readJSON file: 'tempGitFile.json'
-            def testdef = '{ "stuff" : "things"}'
+            //def testdef = '{ "stuff" : "things"}'
             echo '${fromgithook}'
-            echo '${testdef}'
-            println fromgithook
+            //echo '${testdef}'
+            //println fromgithook
 
+            sh 'echo +fromgithook+'
             
         }
         /*
