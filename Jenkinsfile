@@ -13,7 +13,8 @@ try {
 
             sh 'oc get pods'
 
-            readJSON file: 'tempGitFile.json'
+            def fromgithook = readJSON file: 'tempGitFile.json'
+            echo '$fromgithook'
 
             
         }
