@@ -5,8 +5,10 @@ try {
             
             checkout scm
             echo "the build worked! The payload is $payload"
-            featurebranch = JSON.parse($payload)
+
             sh 'oc get pods'
+
+            sh 'featurebranch = JSON.parse($payload)'
 
             
         }
