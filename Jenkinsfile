@@ -8,11 +8,11 @@ try {
             
             checkout scm
             //echo "the build worked! The payload is $payload"
-            sh 'githubdelivery = $payload'
+            //sh 'githubdelivery = $payload'
 
             sh 'oc get pods'
 
-            sh 'props = readJSON text: {'example' : 'json'}'
+            def props = readJSON text: {'example' : 'json'}
             
         }
         /*
