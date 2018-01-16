@@ -5,9 +5,12 @@ try {
             
             checkout scm
             echo "the build worked! The payload is $payload"
+            featurebranch = JSON.parse($payload)
+            sh 'oc get pods'
 
             
         }
+        /*
         stage('Deploy to Dev') {
             openshiftDeploy apiURL: '', authToken: '', depCfg: 'simple-nodejs-dev', verbose: 'false', waitTime: ''
             openshiftVerifyDeployment apiURL: '', authToken: '', depCfg: 'simple-nodejs-dev', verbose: 'false', waitTime: ''
@@ -33,7 +36,7 @@ try {
         stage('Deploy to Production') {
             openshiftDeploy apiURL: '', authToken: '', depCfg: 'simple-nodejs-prod', verbose: 'false', waitTime: ''
             openshiftVerifyDeployment apiURL: '', authToken: '', depCfg: 'simple-nodejs-prod', verbose: 'false', waitTime: ''
-        }
+        } */
     }
 } catch (err) {
     echo "in catch block"
