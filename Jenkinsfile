@@ -8,10 +8,11 @@ try {
             
             checkout scm
             echo "the build worked! The payload is $payload"
+            githubdelivery = $payload
 
             sh 'oc get pods'
 
-            readJSON text: $payload
+            readJSON text: githubdelivery
             
         }
         /*
