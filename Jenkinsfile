@@ -15,7 +15,9 @@ try {
             sh 'oc get pods'
 
             def fromgithook = readJSON file: 'tempGitFile.json'
+            def testdef = '{ "stuff" : "things"}'
             echo '${fromgithook}'
+            echo '${testdef}'
 
             
         }
