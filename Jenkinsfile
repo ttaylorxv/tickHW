@@ -8,13 +8,14 @@ try {
             
             checkout scm
             sh 'echo "$payload" >> tempGitFile.json'
+            sh 'cat tempGitFile.json'
             echo "$payload"
             //sh 'githubdelivery = $payload'
 
             sh 'oc get pods'
 
             def fromgithook = readJSON file: 'tempGitFile.json'
-            echo '$fromgithook'
+            echo '${fromgithook}'
 
             
         }
