@@ -4,7 +4,11 @@ try {
         stage('checkout-and-test') {
 
             checkout scm
+            def payloadString = build.buildVariableResolver.resolve("payload")
 
+            payloadObject = new groovy.json.JsonSlurper().parseText(payloadString)
+
+            echo payloadObject
 
         }
         stage('Deploy to Dev') {
