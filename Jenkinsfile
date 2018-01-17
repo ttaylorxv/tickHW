@@ -5,8 +5,9 @@ import hudson.model.*
 try {
     node {
         stage('checkout-and-test') {
-            /*
+            
             checkout scm
+            /*
             sh 'echo "$payload" >> tempGitFile.json'
             //sh 'cat tempGitFile.json'
             //echo "$payload"
