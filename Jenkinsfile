@@ -26,12 +26,11 @@ try {
             println fromgithook.ref
 
             println fromgithook['ref']
-            */
+            */ 
         }
         
         stage('Deploy to Dev') {
-            openshiftDeploy apiURL: '', authToken: '', depCfg: 'simple-nodejs-dev', verbose: 'false', waitTime: ''
-            openshiftVerifyDeployment apiURL: '', authToken: '', depCfg: 'simple-nodejs-dev', verbose: 'false', waitTime: ''
+            openshiftBuild apiURL: '', authToken: '', bldCfg: 'simple-nodejs-dev', buildName: '', checkForTriggeredDeployments: 'true', commitID: '', namespace: '', showBuildLogs: 'true', verbose: 'false', waitTime: '', waitUnit: 'sec'
 
         }
         stage('Approve QA Deployment') {
@@ -41,8 +40,7 @@ try {
         }
         // Publish to a QA environment
         stage('Deploy to QA') {
-            openshiftDeploy apiURL: '', authToken: '', depCfg: 'simple-nodejs-qa', verbose: 'false', waitTime: ''
-            openshiftVerifyDeployment apiURL: '', authToken: '', depCfg: 'simple-nodejs-qa', verbose: 'false', waitTime: ''
+            openshiftBuild apiURL: '', authToken: '', bldCfg: 'simple-nodejs-qa', buildName: '', checkForTriggeredDeployments: 'true', commitID: '', namespace: '', showBuildLogs: 'true', verbose: 'false', waitTime: '', waitUnit: 'sec'
         }
         // Wait until authorization to push to production
         stage('Approve Production Deployment') {
@@ -52,8 +50,7 @@ try {
         }
         // Push to production
         stage('Deploy to Production') {
-            openshiftDeploy apiURL: '', authToken: '', depCfg: 'simple-nodejs-prod', verbose: 'false', waitTime: ''
-            openshiftVerifyDeployment apiURL: '', authToken: '', depCfg: 'simple-nodejs-prod', verbose: 'false', waitTime: ''
+            openshiftBuild apiURL: '', authToken: '', bldCfg: 'simple-nodejs-prod', buildName: '', checkForTriggeredDeployments: 'true', commitID: '', namespace: '', showBuildLogs: 'true', verbose: 'false', waitTime: '', waitUnit: 'sec'
         } 
     }
 } catch (err) {
