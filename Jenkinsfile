@@ -5,7 +5,7 @@ import hudson.model.*
 try {
     node {
         stage('checkout-and-test') {
-            
+            /*
             checkout scm
             sh 'echo "$payload" >> tempGitFile.json'
             //sh 'cat tempGitFile.json'
@@ -25,9 +25,9 @@ try {
             println fromgithook.ref
 
             println fromgithook['ref']
-            
+            */
         }
-        /*
+        
         stage('Deploy to Dev') {
             openshiftDeploy apiURL: '', authToken: '', depCfg: 'simple-nodejs-dev', verbose: 'false', waitTime: ''
             openshiftVerifyDeployment apiURL: '', authToken: '', depCfg: 'simple-nodejs-dev', verbose: 'false', waitTime: ''
@@ -53,7 +53,7 @@ try {
         stage('Deploy to Production') {
             openshiftDeploy apiURL: '', authToken: '', depCfg: 'simple-nodejs-prod', verbose: 'false', waitTime: ''
             openshiftVerifyDeployment apiURL: '', authToken: '', depCfg: 'simple-nodejs-prod', verbose: 'false', waitTime: ''
-        } */
+        } 
     }
 } catch (err) {
     echo "in catch block"

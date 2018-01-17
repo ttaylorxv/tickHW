@@ -6,7 +6,11 @@ var calculateSquare = function(numIn) {
 };
 
 
-for(var x = 0; x < 999999; x++) {
+var express = require('express');
 
-    console.log(calculateSquare(x));
-}
+var app = express();
+
+
+app.get('/', (req, res) => res.send('Hello World!'))
+
+app.listen(3000, () => console.log('Example app listening on port 3000!'))
