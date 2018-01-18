@@ -30,6 +30,7 @@ try {
 
             def branch = fromgithook.ref
             branch = branch.substring(branch.lastIndexOf("/") + 1)
+            branch = branch.toLowerCase()
             println branch
             def user = fromgithook.pusher.name
 
@@ -38,7 +39,7 @@ try {
             -p SOURCE_REPOSITORY_URL=https://github.com/cfarriscx/tickHW.git \
             -p SOURCE_REPOSITORY_REF=$branch \
             -p DATABASE_NAME=$branch \
-            -p DATABASE_SERVICE_NAME=$branch-MONGODB \
+            -p DATABASE_SERVICE_NAME=$branch-mongodb \
             -l BRANCH=$branch \
             | oc create -f -"""
             
