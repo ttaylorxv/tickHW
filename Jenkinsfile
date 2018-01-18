@@ -29,9 +29,11 @@ try {
             println fromgithook.pusher.name
 
             def branch = fromgithook.ref
+            branch = branch.substring(branch.lastIndexOf("/"))
+            println branch
             def user = fromgithook.pusher.name
 
-            sh """oc process nodejs-mongo-jenkinspipe -p NAME=$user -p SOURCE_REPOSITORY_URL=https://github.com/cfarriscx/tickHW.git | oc create -f -"""
+            //sh """oc process nodejs-mongo-jenkinspipe -p NAME=$user -p SOURCE_REPOSITORY_URL=https://github.com/cfarriscx/tickHW.git | oc create -f -"""
             
 
 
