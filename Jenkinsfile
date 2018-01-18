@@ -33,13 +33,13 @@ try {
             println branch
             def user = fromgithook.pusher.name
 
-            sh """oc process nodejs-mongo-jenkinspipe 
-            -l BRANCH=$branch
-            -p NAME=$user-$branch 
-            -p SOURCE_REPOSITORY_URL=https://github.com/cfarriscx/tickHW.git 
-            -p SOURCE_REPOSITORY_REF=$branch
-            -p DATABASE_NAME=$branch
-            -p DATABASE_SERVICE_NAME=$branch-MONGODB
+            sh """oc process nodejs-mongo-jenkinspipe \
+            -p NAME=$user-$branch \
+            -p SOURCE_REPOSITORY_URL=https://github.com/cfarriscx/tickHW.git \
+            -p SOURCE_REPOSITORY_REF=$branch \
+            -p DATABASE_NAME=$branch \
+            -p DATABASE_SERVICE_NAME=$branch-MONGODB \
+            -l BRANCH=$branch \
             | oc create -f -"""
             
 
