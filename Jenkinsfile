@@ -29,7 +29,7 @@ try {
             println fromgithook.pusher.name
 
             def branch = fromgithook.ref
-            branch = branch.substring(branch.lastIndexOf("/" + 1))
+            branch = branch.substring(branch.lastIndexOf("/") + 1)
             println branch
             def user = fromgithook.pusher.name
 
