@@ -17,7 +17,7 @@ try {
 
             def fromgithook = readJSON file: 'tempGitFile.json'
             //def testdef = '{ "stuff" : "things"}'
-            echo '${fromgithook}'
+            //echo '${fromgithook}'
             //echo '${testdef}'
             //println fromgithook
 
@@ -31,7 +31,7 @@ try {
             def branch = fromgithook.ref
             def user = fromgithook.pusher.name
 
-            sh """oc process nodejs-mong-jenkinspipe -p NAME=$user-$branch -p SOURCE_REPOSITORY_URL=https://github.com/cfarriscx/tickHW.git -p SOURCE_REPOSITORY_REF=$branch"""
+            sh """oc process nodejs-mongo-jenkinspipe -p NAME=$user-$branch -p SOURCE_REPOSITORY_URL=https://github.com/cfarriscx/tickHW.git -p SOURCE_REPOSITORY_REF=$branch"""
             
 
 
