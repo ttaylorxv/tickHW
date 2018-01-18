@@ -7,7 +7,7 @@ try {
         stage('checkout-and-test') {
             
             checkout scm
-            /*
+            
             sh 'echo "$payload" >> tempGitFile.json'
             //sh 'cat tempGitFile.json'
             //echo "$payload"
@@ -23,12 +23,20 @@ try {
 
             sh """echo $fromgithook"""
 
-            println fromgithook.ref
+            sh 'oc project twitter-cicd'
 
-            println fromgithook['ref']
-            */ 
+            println fromgithook.ref
+            println fromgithook.pusher.name
+
+            def branch = fromgithook.ref
+            def user = fromgithook.pusher.name
+
+            sh """oc process nodejs-mong-jenkinspipe -p NAME=$user-$branch -p SOURCE_REPOSITORY_URL=https://github.com/cfarriscx/tickHW.git -p SOURCE_REPOSITORY_REF=$branch"""
+            
+
+
         }
-        
+        /*
         stage('Deploy to Dev') {
             openshiftBuild apiURL: '', authToken: '', bldCfg: 'simple-nodejs-dev', buildName: '', checkForTriggeredDeployments: 'true', commitID: '', namespace: '', showBuildLogs: 'true', verbose: 'false', waitTime: '', waitUnit: 'sec'
 
@@ -51,7 +59,7 @@ try {
         // Push to production
         stage('Deploy to Production') {
             openshiftBuild apiURL: '', authToken: '', bldCfg: 'simple-nodejs-prod', buildName: '', checkForTriggeredDeployments: 'true', commitID: '', namespace: '', showBuildLogs: 'true', verbose: 'false', waitTime: '', waitUnit: 'sec'
-        } 
+        } */
     }
 } catch (err) {
     echo "in catch block"
