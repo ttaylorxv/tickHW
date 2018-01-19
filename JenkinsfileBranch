@@ -37,7 +37,7 @@ try {
                 //println fromgithook.pusher.name
                 //def user = fromgithook.pusher.name
                 sh """oc process nodejs-mongo-jenkinspipe \
-                -p NAME=$user-$branch \
+                -p NAME=$branch \
                 -p SOURCE_REPOSITORY_URL=https://github.com/ttaylorxv/tickHW.git \
                 -p SOURCE_REPOSITORY_REF=$branch \
                 -p DATABASE_NAME=$branch \
@@ -46,7 +46,7 @@ try {
                 | oc create -f -"""
            // } else {
                 // old branch with existing DC so launch build and deploy
-                openshiftBuild apiURL: '', authToken: '', bldCfg: """$user-$branch""", buildName: '', checkForTriggeredDeployments: 'true', commitID: '', namespace: '', showBuildLogs: 'true', verbose: 'false', waitTime: '', waitUnit: 'sec'
+                openshiftBuild apiURL: '', authToken: '', bldCfg: """$branch""", buildName: '', checkForTriggeredDeployments: 'true', commitID: '', namespace: '', showBuildLogs: 'true', verbose: 'false', waitTime: '', waitUnit: 'sec'
             //}
 
         }
