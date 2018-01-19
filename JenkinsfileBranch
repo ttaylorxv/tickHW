@@ -33,9 +33,9 @@ try {
 
             if(true) {*/
                 // new branch so generate DC from template
-                println fromgithook.ref
-                println fromgithook.pusher.name
-                def user = fromgithook.pusher.name
+                //println fromgithook.ref
+                //println fromgithook.pusher.name
+                //def user = fromgithook.pusher.name
                 sh """oc process nodejs-mongo-jenkinspipe \
                 -p NAME=$user-$branch \
                 -p SOURCE_REPOSITORY_URL=https://github.com/ttaylorxv/tickHW.git \
