@@ -6,4 +6,3 @@ describe('String#split', function(){
   });
 })
 
-var testing = 'testing';
