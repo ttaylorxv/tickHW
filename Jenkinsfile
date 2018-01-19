@@ -11,7 +11,7 @@ try {
         stage('checkout-and-test') {
             checkout scm
             
-            //sh 'echo env.BRANCH_NAME'
+            sh 'echo env.BRANCH_NAME'
             //sh 'echo ${env.BRANCH_NAME}'
             def branch = ${env.BRANCH_NAME}
            /* // Read payload which is a submitted JSON request from github and write to temp file
