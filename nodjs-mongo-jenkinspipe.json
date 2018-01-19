@@ -9,7 +9,7 @@
       "tags": "quickstart,nodejs",
       "iconClass": "icon-nodejs",
       "openshift.io/long-description": "This template defines resources needed to develop a NodeJS application, including a build configuration, application deployment configuration, and database deployment configuration.",
-      "openshift.io/provider-display-name": "Cody F",
+      "openshift.io/provider-display-name": "Tonye T,
       "openshift.io/documentation-url": "https://github.com/openshift/nodejs-ex",
       "openshift.io/support-url": "crossvale.com",
       "template.openshift.io/bindable": "false"
@@ -460,7 +460,7 @@
       "displayName": "Git Repository URL",
       "description": "The URL of the repository with your application source code.",
       "required": true,
-      "value": "https://github.com/openshift/nodejs-ex.git"
+      "value": "${SOURCE_REPOSITORY_URL}"
     },
     {
       "name": "SOURCE_REPOSITORY_REF",
