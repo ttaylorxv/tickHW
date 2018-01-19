@@ -40,19 +40,29 @@ try {
                 //println fromgithook.ref
                 //println fromgithook.pusher.name
                 //def user = fromgithook.pusher.name
-                sh """oc process nodejs-mongo-jenkinspipe \
+                /*sh """oc process nodejs-mongo-jenkinspipe \
                 -p NAME=$branch \
                 -p SOURCE_REPOSITORY_URL=https://github.com/ttaylorxv/tickHW.git \
                 -p SOURCE_REPOSITORY_REF=$branch \
                 -p DATABASE_NAME=$branch \
                 -p DATABASE_SERVICE_NAME=$branch-mongodb \
                 -l BRANCH=$branch \
-                | oc create -f -"""
+                | oc create -f -"""*/
+            sh """oc new-app nodejs-mongo-jenkinspipe.json \
+                -p NAME=$branch \
+                -p SOURCE_REPOSITORY_URL=https://github.com/ttaylorxv/tickHW.git \
+                -p SOURCE_REPOSITORY_REF=$branch \
+                -p DATABASE_NAME=$branch \
+                -p DATABASE_SERVICE_NAME=$branch-mongodb \
+                -l BRANCH=$branch \ """
            // } else {
                 // old branch with existing DC so launch build and deploy
                 openshiftBuild apiURL: '', authToken: '', bldCfg: """$branch""", buildName: '', checkForTriggeredDeployments: 'true', commitID: '', namespace: '', showBuildLogs: 'true', verbose: 'false', waitTime: '', waitUnit: 'sec'
             //}
 
+        }
+        stage('Deploy to Test Environment for ${NAME}') {
+            openshiftBuild apiURL: '', authToken: '', bldCfg: """$branch""", buildName: '', checkForTriggeredDeployments: 'true', commitID: '', namespace: '', showBuildLogs: 'true', verbose: 'false', waitTime: '', waitUnit: 'sec'
         }
     }
 } catch (err) {
