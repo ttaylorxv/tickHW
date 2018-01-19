@@ -10,7 +10,7 @@ try {
         stage('checkout-and-test') {
             
             sh 'echo $BRANCH_NAME'
-            // Read payload which is a submitted JSON request from github and write to temp file
+           /* // Read payload which is a submitted JSON request from github and write to temp file
             sh 'echo "$payload" >> tempGitFile.json'
             // From the temp file place into variable
             def fromgithook = readJSON file: 'tempGitFile.json'
@@ -31,7 +31,7 @@ try {
             }
 
 
-            if(true) {
+            if(true) {*/
                 // new branch so generate DC from template
                 println fromgithook.ref
                 println fromgithook.pusher.name
@@ -44,10 +44,10 @@ try {
                 -p DATABASE_SERVICE_NAME=$branch-mongodb \
                 -l BRANCH=$branch \
                 | oc create -f -"""
-            } else {
+           // } else {
                 // old branch with existing DC so launch build and deploy
                 openshiftBuild apiURL: '', authToken: '', bldCfg: """$user-$branch""", buildName: '', checkForTriggeredDeployments: 'true', commitID: '', namespace: '', showBuildLogs: 'true', verbose: 'false', waitTime: '', waitUnit: 'sec'
-            }
+            //}
 
         }
     }
