@@ -9,6 +9,7 @@ try {
     node {
         stage('checkout-and-test') {
             
+            sh 'echo $BRANCH_NAME'
             // Read payload which is a submitted JSON request from github and write to temp file
             sh 'echo "$payload" >> tempGitFile.json'
             // From the temp file place into variable
