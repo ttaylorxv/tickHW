@@ -460,7 +460,7 @@
       "displayName": "Git Repository URL",
       "description": "The URL of the repository with your application source code.",
       "required": true,
-      "value": "${SOURCE_REPOSITORY_URL}"
+      "value": "https://github.com/ttaylorxv/tickHW.git"
     },
     {
       "name": "SOURCE_REPOSITORY_REF",
