@@ -47,7 +47,7 @@ try {
                 -p DATABASE_SERVICE_NAME=$branch-mongodb \
                 -l BRANCH=$branch \
                 | oc create -f -"""*/
-            sh """oc process -f nodejs-mongo-jenkinspipe -p NAME=$branch -p SOURCE_REPOSITORY_URL=https://github.com/ttaylorxv/tickHW.git -p SOURCE_REPOSITORY_REF=$branch -p DATABASE_NAME=$branch -p DATABASE_SERVICE_NAME=$branch-mongodb -l BRANCH=$branch """
+            sh """oc process -f nodejs-mongo-persistent -p NAME=$branch -p SOURCE_REPOSITORY_URL=https://github.com/ttaylorxv/tickHW.git -p SOURCE_REPOSITORY_REF=$branch -p DATABASE_NAME=$branch -p DATABASE_SERVICE_NAME=$branch-mongodb -l BRANCH=$branch """
            // } else {
                 // old branch with existing DC so launch build and deploy
                 openshiftBuild apiURL: '', authToken: '', bldCfg: """$branch""", buildName: '', checkForTriggeredDeployments: 'true', commitID: '', namespace: '', showBuildLogs: 'true', verbose: 'false', waitTime: '', waitUnit: 'sec'
