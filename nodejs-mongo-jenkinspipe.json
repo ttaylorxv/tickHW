@@ -18,7 +18,7 @@
   "message": "The following service(s) have been created in your project: ${NAME}, ${DATABASE_SERVICE_NAME}.",
   "labels": {
     "template": "nodejs-mongo-jenkinspipe",
-    "app": "${NAME}"
+    "app": "Testy"
   },
   "objects": [
     {
