@@ -33,8 +33,7 @@ try {
                 // delete all with label
                 """oc delete all -l BRANCH=$branch"""
             }
-           
-
+          //
             if(true) {*/
                 // new branch so generate DC from template
                 //println fromgithook.ref
