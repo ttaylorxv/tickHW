@@ -13,7 +13,7 @@ try {
             
             //sh 'echo env.BRANCH_NAME']
             
-            def branch = BRANCH_NAME
+            def branch = BRANCH_NAME.toLowerCase();
            /* // Read payload which is a submitted JSON request from github and write to temp file
             sh 'echo "$payload" >> tempGitFile.json'
             // From the temp file place into variable
