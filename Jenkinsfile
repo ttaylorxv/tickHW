@@ -14,6 +14,7 @@ try {
             //sh 'echo env.BRANCH_NAME']
             
             def branch = BRANCH_NAME.toLowerCase();
+            def source = BRANCH_NAME
            /* // Read payload which is a submitted JSON request from github and write to temp file
             sh 'echo "$payload" >> tempGitFile.json'
             // From the temp file place into variable
@@ -49,7 +50,7 @@ try {
                 | oc create -f -"""*/
             //sh """pwd"""
             //sh """oc create -f \$(pwd)/nodejs-mongo-jenkinspipe.json"""
-            sh """oc process -f nodejs-mongo-jenkinspipe.json -p NAME=$branch -p SOURCE_REPOSITORY_URL=https://github.com/ttaylorxv/tickHW.git -p SOURCE_REPOSITORY_REF=$branch -p DATABASE_NAME=$branch -p DATABASE_SERVICE_NAME=$branch-mongodb -l BRANCH=$branch -lapp=$branch | oc create -f - | oc new-app -f nodejs-mongo-jenkinspipe.json"""
+            sh """oc process -f nodejs-mongo-jenkinspipe.json -p NAME=$branch -p SOURCE_REPOSITORY_URL=https://github.com/ttaylorxv/tickHW.git -p SOURCE_REPOSITORY_REF=$source -p DATABASE_NAME=$branch -p DATABASE_SERVICE_NAME=$branch-mongodb -l BRANCH=$branch -lapp=$branch | oc create -f - | oc new-app -f nodejs-mongo-jenkinspipe.json"""
            // } else {
                 // old branch with existing DC so launch build and deploy
                 openshiftBuild apiURL: '', authToken: '', bldCfg: """$branch""", buildName: '', checkForTriggeredDeployments: 'true', commitID: '', namespace: '', showBuildLogs: 'true', verbose: 'false', waitTime: '', waitUnit: 'sec'
