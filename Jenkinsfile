@@ -8,11 +8,10 @@ import jenkins.model.*
 
 try {
     node {
+        def branch = BRANCH_NAME.toLowerCase();
+        def source = BRANCH_NAME
         stage('checkout-and-test') {
             checkout scm
-            
-            def branch = BRANCH_NAME.toLowerCase();
-            def source = BRANCH_NAME
       
             sh """oc process -f nodejs-mongo-jenkinspipe.json -p NAME=$branch -p SOURCE_REPOSITORY_URL=https://github.com/ttaylorxv/tickHW.git -p SOURCE_REPOSITORY_REF=$source -p DATABASE_NAME=$branch -p DATABASE_SERVICE_NAME=$branch-mongodb -lapp=$branch | oc apply -f - """
            
