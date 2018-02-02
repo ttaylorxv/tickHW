@@ -20,7 +20,8 @@ try {
 
         }
         stage('Deploy to Test Environment for ${NAME}') {
-            openshiftBuild apiURL: '', authToken: '', bldCfg: """$branch""", buildName: '', checkForTriggeredDeployments: 'true', commitID: '', namespace: '', showBuildLogs: 'true', verbose: 'false', waitTime: '', waitUnit: 'sec'
+            openshiftDeploy depCfg: """$branch""", verbose: 'false'
+            openshiftVerifyDeployment depCfg: """$branch""", verbose: 'false'
         }
     }
 } catch (err) {
