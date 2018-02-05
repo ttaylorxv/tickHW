@@ -22,10 +22,10 @@ try {
             
 
         }
-        stage('Deploy to Test Environment for $branch') {
+        /*stage('Deploy to Test Environment for $branch') {
             openshiftDeploy depCfg: """$branch""", verbose: 'false'
             openshiftVerifyDeployment depCfg: """$branch""", verbose: 'false'
-        }
+        }*/
 
 
         } else {
