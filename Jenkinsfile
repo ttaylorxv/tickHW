@@ -10,6 +10,10 @@ try {
     node {
         def branch = BRANCH_NAME.toLowerCase();
         def source = BRANCH_NAME
+        if (branch.contains('/'){
+            branch = branch.substring(branch.lastIndexOf("/") + 1)
+        }
+        
         stage('checkout-and-test') {
             checkout scm
       
