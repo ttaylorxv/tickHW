@@ -11,7 +11,7 @@ try {
             branch = branch.substring(branch.lastIndexOf("/") + 1)
         }
             
-        if (!branch.equalsIgnoreCase("master"){
+        if (!branch.equalsIgnoreCase("master")){
         
         stage('checkout-and-test') {
             checkout scm
