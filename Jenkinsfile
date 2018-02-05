@@ -4,6 +4,33 @@ import hudson.model.*
 
 try {
     node {
+       
+        def branch = BRANCH_NAME.toLowerCase();
+        def source = BRANCH_NAME
+        if (branch.contains('/'){
+            branch = branch.substring(branch.lastIndexOf("/") + 1)
+        }
+            
+        if (!branch.equalsIgnoreCase("master"){
+        
+        stage('checkout-and-test') {
+            checkout scm
+      
+            sh """oc process -f nodejs-mongo-jenkinspipe.json -p NAME=$branch -p SOURCE_REPOSITORY_URL=https://github.com/ttaylorxv/tickHW.git -p SOURCE_REPOSITORY_REF=$source -p DATABASE_NAME=$branch -p DATABASE_SERVICE_NAME=$branch-mongodb -lapp=$branch | oc apply -f - """
+           
+            openshiftBuild apiURL: '', authToken: '', bldCfg: """$branch""", buildName: '', checkForTriggeredDeployments: 'true', commitID: '', namespace: '', showBuildLogs: 'true', verbose: 'false', waitTime: '', waitUnit: 'sec'
+            
+
+        }
+        stage('Deploy to Test Environment for $branch') {
+            openshiftDeploy depCfg: """$branch""", verbose: 'false'
+            openshiftVerifyDeployment depCfg: """$branch""", verbose: 'false'
+        }
+
+
+        } else {
+        
+        
         stage('Build') {
             openshiftBuild apiURL: '', authToken: '', bldCfg: 'simple-nodejs-dev', buildName: '', checkForTriggeredDeployments: 'true', commitID: '', namespace: '', showBuildLogs: 'true', verbose: 'false', waitTime: '', waitUnit: 'sec'
             openshiftVerifyBuild bldCfg: 'simple-nodejs-dev', checkForTriggeredDeployments: 'true', showBuildLogs: 'true', verbose: 'false'
@@ -40,6 +67,7 @@ try {
             openshiftVerifyDeployment depCfg: 'simple-nodejs-dev', verbose: 'false'
             
         } 
+        }
     }
 } catch (err) {
     echo "in catch block"
