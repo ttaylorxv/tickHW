@@ -7,7 +7,7 @@ try {
        
         def branch = BRANCH_NAME.toLowerCase();
         def source = BRANCH_NAME
-        if (branch.contains('/'){
+        if (branch.contains('/')){
             branch = branch.substring(branch.lastIndexOf("/") + 1)
         }
             
